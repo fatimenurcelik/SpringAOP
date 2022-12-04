@@ -19,9 +19,9 @@ public class ProductManager implements ProductService {
 
 	private ProductRepository productRepository;
 	private ModelMapperService mapperService;
-
+	
 	@Override
-	public List<GetAllProductResponse> getAll() {
+	public List<GetAllProductResponse> getAll() {		
 		List<Product> products = this.productRepository.findAll();
 		List<GetAllProductResponse> responses = products.stream()
 				.map(product->this.mapperService.forResponse().map(product, GetAllProductResponse.class))
